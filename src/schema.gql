@@ -1,0 +1,73 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  id: ID!
+  street: String!
+  street2: String
+  city: String!
+  zipCode: Float!
+  client: Client!
+  clientId: ID!
+}
+
+type Client {
+  id: ID!
+  document: String!
+  name: String!
+  lastName: String!
+  phone: String!
+  cellPhone: String
+  addresses: [Address!]
+}
+
+type Query {
+  clients: [Client!]!
+  client(id: ID!): Client!
+  addresses: [Address!]!
+  address(id: ID!): Address!
+}
+
+type Mutation {
+  createClient(createClientInput: CreateClientInput!): Client!
+  updateClient(updateClientInput: UpdateClientInput!): Client!
+  removeClient(id: ID!): Client!
+  createAddress(createAddressInput: CreateAddressInput!): Address!
+  updateAddress(updateAddressInput: UpdateAddressInput!): Address!
+  removeAddress(id: ID!): Address!
+}
+
+input CreateClientInput {
+  document: String!
+  name: String!
+  lastName: String!
+  phone: String!
+  cellPhone: String
+}
+
+input UpdateClientInput {
+  document: String
+  name: String
+  lastName: String
+  phone: String
+  cellPhone: String
+  id: ID!
+}
+
+input CreateAddressInput {
+  street: String!
+  street2: String
+  city: String!
+  zipCode: Float!
+  clientId: ID!
+}
+
+input UpdateAddressInput {
+  street: String
+  street2: String
+  city: String
+  zipCode: Float
+  clientId: ID
+  id: ID!
+}
